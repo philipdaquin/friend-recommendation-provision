@@ -8,7 +8,9 @@ resource "aws_security_group" "vpc_link" {
         protocol    = "-1"
         cidr_blocks = ["0.0.0.0/0"]
     }
+    
 }
+
 
 resource "aws_apigatewayv2_vpc_link" "eks" {
     name = "eks"
@@ -22,14 +24,13 @@ resource "aws_apigatewayv2_vpc_link" "eks" {
 resource "aws_apigatewayv2_integration" "integration" {
     api_id = aws_apigatewayv2_api.main.id
 
-    // Loadbalancer Listener URI
-    integration_uri = ""
+    // Create a  Loadbalancer Listener URI
+    integration_uri = "arn:aws:elasticloadbalancing:us-east-2:542742021505:listener/net/a5d594222defc454686cdcdd7fb8ec6d/f16513f9aa1c96fa/a5697d0c9fa26dab"
     
+    integration_type   = "HTTP_PROXY"
     integration_method = "ANY"
-    integration_type = "HTTP_PROXY"
-
-    connection_type = "VPC_LINK"
-    connection_id = aws_apigatewayv2_vpc_link.eks.id 
+    connection_type    = "VPC_LINK"
+    connection_id = aws_apigatewayv2_vpc_link.eks.id
 }
 
 // Test 
@@ -41,5 +42,5 @@ resource "aws_apigatewayv2_route" "echo" {
 
 
 output "hello_world" {
-    value = "${aws_apigatewayv2_stage.dev.invoke_url}/echo"
+    value = "${aws_apigatewayv2_stage.staging.invoke_url}/echo"
 }
