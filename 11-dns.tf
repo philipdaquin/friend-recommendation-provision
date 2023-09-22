@@ -1,3 +1,9 @@
+
+# resource "aws_acm_certificate" "api" {
+#     domain_name = "api.philipdaquin.com"
+#     validation_method = "DNS"
+# }
+
 data "aws_route53_zone" "public" {
     name = "philipdaquin.com"
     private_zone = false
