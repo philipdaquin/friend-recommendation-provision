@@ -1,0 +1,46 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: 1-example
+
+
+---
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: 1-example
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.25.0
+          ports:
+            - containerPort: 80
+
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx
+  namespace: 1-example
+spec:
+  ports:
+    - name: web
+      port: 80
+  selector:
+    app: nginx
