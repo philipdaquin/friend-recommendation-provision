@@ -33,9 +33,9 @@ resource "aws_eks_cluster" "eks" {
 
     subnet_ids = [
       aws_subnet.private_zone1.id,
-      aws_subnet.private_zone2.id
-      # aws_subnet.public_zone1.id,
-      # aws_subnet.public_zone2.id
+      aws_subnet.private_zone2.id,
+      aws_subnet.public_zone1.id,
+      aws_subnet.public_zone2.id
     ]
   }
 
