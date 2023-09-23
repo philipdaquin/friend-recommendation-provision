@@ -1,5 +1,5 @@
 resource "aws_apigatewayv2_domain_name" "api" {
-    domain_name = "api.example.com"
+    domain_name = "api.friend-recommendation.com"
     
     domain_name_configuration {
         certificate_arn = aws_acm_certificate.api.arn
