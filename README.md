@@ -22,7 +22,7 @@ it will create all the infrastructe required to run the ci cd piepline adn as we
 - Autoscaling 
 - Gateway 
 
-## Architecture 
+## Architecture **[POC]**
 ![aws_architecture](https://github.com/philipdaquin/friend-recommendation-provision/assets/85416532/e1ec189e-6631-4d93-b099-41378943201e)
 
 
