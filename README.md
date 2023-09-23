@@ -29,6 +29,8 @@ it will create all the infrastructe required to run the ci cd piepline adn as we
 
 
 ### Argo CD 
+[description]
+
 
 
 
@@ -36,4 +38,5 @@ it will create all the infrastructe required to run the ci cd piepline adn as we
 2. Test connection with EchoServer. Expose application to NLB 
 3. Install Argo CD and select the manifest files 
 4. Initialise an API gateway
-5. Create a custom DNS with Route53 
+5. Create a hosted zone in Route53. 
+6. Create custom DNS name with ACM certificate. 
