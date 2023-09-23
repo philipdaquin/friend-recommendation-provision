@@ -1,5 +1,6 @@
 resource "aws_security_group" "ec2" {
-  name   = "security_test"
+  name   = "Allow SSH"
+  description = "Allow SSH inbound traffic"
   vpc_id = aws_vpc.main.id
 
   ingress {
