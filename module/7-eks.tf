@@ -26,7 +26,7 @@ resource "aws_eks_cluster" "eks" {
   name     = "${local.env}-${local.eks_name}"
   version  = local.eks_version
   role_arn = aws_iam_role.eks.arn
-
+  
   vpc_config {
     endpoint_private_access = false
     endpoint_public_access  = true
