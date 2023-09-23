@@ -28,9 +28,15 @@ it will create all the infrastructe required to run the ci cd piepline adn as we
 
 
 ### Argo CD 
+**Manual Installation**: https://argo-cd.readthedocs.io/en/stable/getting_started/
+or initialise Argo CD using Helm with Terraform. /argocd
+
 [description]
 
 
+
+
+## Steps to reproduce
 1. Provision infrastructure on Terraform 
 2. Test connection with EchoServer. Expose application to NLB 
 3. Install Argo CD and select the manifest files 
