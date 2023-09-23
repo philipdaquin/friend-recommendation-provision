@@ -1,6 +1,6 @@
 resource "aws_security_group" "ec2" {
-  name   = "${env}"
-  vpc_id = local.vpc_id
+  name   = "security_test"
+  vpc_id = aws_vpc.main.id
 
   ingress {
     from_port   = 22
