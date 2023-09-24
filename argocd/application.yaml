@@ -1,10 +1,17 @@
 
+##################################################
+#
+#  To use:  `kubectl apply -f application.yml`
+#
+##################################################
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: my-app
   namespace: argocd
+
+  # Force Argo to delete this instance as well
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
