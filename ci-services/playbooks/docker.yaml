@@ -3,6 +3,7 @@
   hosts: all
   gather_facts: false
   become: yes
+  remote_user: ubuntu
 
   vars:
     key_name: 

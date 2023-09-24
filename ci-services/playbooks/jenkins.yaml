@@ -1,11 +1,11 @@
----
----
 # Description
 - name: Install Jenkins
-  hosts: localhost
+  hosts: all
   become: yes
+  remote_user: ubuntu
+
+
   tasks:
-  
   - name: download apt key
     ansible.builtin.apt_key:
       url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
