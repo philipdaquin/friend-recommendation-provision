@@ -26,7 +26,7 @@ it will create all the infrastructe required to run the ci cd piepline adn as we
 ![aws_architecture](https://github.com/philipdaquin/friend-recommendation-provision/assets/85416532/e1ec189e-6631-4d93-b099-41378943201e)
 
 
-
+## Continous Deployment Pipeline
 ### Argo CD 
 **Manual Installation**: https://argo-cd.readthedocs.io/en/stable/getting_started/
 or initialise Argo CD using Helm with Terraform. /argocd
@@ -42,3 +42,17 @@ or initialise Argo CD using Helm with Terraform. /argocd
 4. Initialise an API gateway
 5. Create a hosted zone in Route53. 
 6. Create custom DNS name with ACM certificate. 
+
+
+## Continuous Integration Pipeline
+
+Stack 
+- Ansible 
+- Jenkins
+- Terraform 
+- EC2
+
+### Steps to reproduce 
+1. Create a new key pair in AWS 
+2. Run Terraform 
+3. Rock and Roll!
