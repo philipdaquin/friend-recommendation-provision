@@ -6,8 +6,8 @@ locals {
   eks_name    = "demo"
   eks_version = "1.27"
   
-  ssh_user    = "ubuntu"
+  ssh_user    = "devops"
   key_name    = "devops"
-  private_key_path = "../modules/devops.pem"
+  private_key_path = "../devops.pem"
 
 }
