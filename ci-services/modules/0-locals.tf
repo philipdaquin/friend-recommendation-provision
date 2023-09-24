@@ -10,4 +10,7 @@ locals {
   key_name    = "devops"
   private_key_path = "../devops.pem"
 
+
+  instance_type = "t2.micro"
+  
 }

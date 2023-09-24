@@ -47,7 +47,7 @@ or initialise Argo CD using Helm with Terraform. /argocd
 ## Continuous Integration Pipeline
 
 Stack 
-- Ansible 
+- Ansible [WIP] ~ I decided to opt-out from using Ansible for now and instead installed Jenkins, Docker, Java manaually 
 - Jenkins
 - Terraform 
 - EC2
