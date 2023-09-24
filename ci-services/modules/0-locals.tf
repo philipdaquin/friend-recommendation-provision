@@ -11,6 +11,6 @@ locals {
   private_key_path = "../devops.pem"
 
 
-  instance_type = "t2.micro"
-  
+  instance_type = "t2.medium"
+
 }

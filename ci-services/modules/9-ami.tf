@@ -1,24 +1,14 @@
-data "aws_ami" "amzlinux" {
+data "aws_ami" "ubuntu" {
     most_recent = true
-    owners = [ "amazon" ]
+    owners      = ["amazon"]
     
     filter {
         name   = "name"
-        values = ["amzn2-ami-kernel-*-hvm-*-gp2"]
-    }
-    
-    filter {
-        name   = "root-device-type"
-        values = ["ebs"]
+        values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-*"]
     }
 
     filter {
         name   = "virtualization-type"
         values = ["hvm"]
     }
-    
-    filter {
-        name   = "architecture"
-        values = ["x86_64"]
-    } 
 }

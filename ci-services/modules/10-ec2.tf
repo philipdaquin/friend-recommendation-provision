@@ -5,8 +5,8 @@ resource "aws_instance" "ec2" {
     #   Version: 20.04 LTS
     #   ami-03605c16ec8bff7de
     #
-    # ami                             = data.aws_ami.amzlinux.id
-    ami                             = "ami-03605c16ec8bff7de"
+    ami                             = data.aws_ami.ubuntu.id
+    # ami                             = "ami-03605c16ec8bff7de"
     instance_type                   = local.instance_type
     associate_public_ip_address     = true
     subnet_id                       = aws_subnet.public_zone1.id
