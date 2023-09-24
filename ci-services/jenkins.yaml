@@ -1,0 +1,9 @@
+# Description
+- name: Install Jenkins
+  hosts: all
+  become: yes
+  remote_user: ubuntu
+
+
+  roles:
+    - jenkins
