@@ -35,8 +35,7 @@ or initialise Argo CD using Helm with Terraform. /argocd
 
 
 
-
-## Steps to reproduce
+### Steps to reproduce
 1. Provision infrastructure on Terraform 
 2. Test connection with EchoServer. Expose application to NLB 
 3. Install Argo CD and select the manifest files 
