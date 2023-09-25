@@ -9,17 +9,12 @@
     - "openjdk-17-jre"
     - "openjdk-17-jdk"
 
-- name: Get Apt Key
-  yum_repository:
-    name:  jenkins-ci
-    baseurl:  https://pkg.jenkins.io/debian-stable
-    description:  jenkins-ci package repository
-    gpgcheck:  yes
-    gpgkey:  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
-    enabled: true
-    state: present
+- name: Add APT key
+  apt_key:
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    # url: https://pkg.jenkins.io/debian/jenkins-ci.org.key
 
-- name: Copy jenkins.list to sources list/ jenkins listen_ports_facts
+- name: Copy jenkins.list to /etc/apt/sources.list.d/jenkins.list
   copy:
     src: jenkins.list
     dest: /etc/apt/sources.list.d/jenkins.list
@@ -30,20 +25,7 @@
     update_cache: yes
     install_recommends: no
 
-- name: Ensure jenkins service added to firewalld
-  firewalld:
-    service: jenkins
-    state: enabled
-    permanent: yes
-    immediate: yes
 
-- name: Ensure port 8080 added to firewalld
-  firewalld:
-    port: 8080/tcp
-    state: enabled
-    permanent: yes
-    immediate: yes
-    
 # - name: Ensure GPG key is imported
 #   yum: 
 #     name: jenkins 
@@ -59,3 +41,39 @@
 #     sudo apt-get install jenkins
 
   
+
+# - name: Get Apt Key
+#   yum_repository:
+#     name:  jenkins-ci
+#     baseurl:  https://pkg.jenkins.io/debian-stable
+#     description:  jenkins-ci package repository
+#     gpgcheck:  yes
+#     gpgkey:  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+#     enabled: true
+#     state: present
+
+# - name: Copy jenkins.list to sources list/ jenkins listen_ports_facts
+#   copy:
+#     src: jenkins.list
+#     dest: /etc/apt/sources.list.d/jenkins.list
+
+# - name: Install Jenkins
+#   apt: 
+#     name: jenkins
+#     update_cache: yes
+#     install_recommends: no
+
+# - name: Ensure jenkins service added to firewalld
+#   firewalld:
+#     service: jenkins
+#     state: enabled
+#     permanent: yes
+#     immediate: yes
+
+# - name: Ensure port 8080 added to firewalld
+#   firewalld:
+#     port: 8080/tcp
+#     state: enabled
+#     permanent: yes
+#     immediate: yes
+    

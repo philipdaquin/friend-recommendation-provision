@@ -4,15 +4,15 @@ resource "aws_instance" "ec2" {
     #   AMI for US-East-2 
     #   Version: 20.04 LTS
     #   ami-03605c16ec8bff7de
+    # ami                             = "ami-03605c16ec8bff7de"
     #
     ami                             = data.aws_ami.ubuntu.id
-    # ami                             = "ami-03605c16ec8bff7de"
     instance_type                   = local.instance_type
     associate_public_ip_address     = true
     subnet_id                       = aws_subnet.public_zone1.id
     # availability_zone               = local.zone1
     security_groups                 = [aws_security_group.ec2.id]
-    key_name                        = local.ssh_user
+    key_name                        = local.key_name
     
     tags = {
         Name = "${local.env}-ec2"

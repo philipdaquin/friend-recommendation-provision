@@ -4,6 +4,6 @@
   become: yes
   remote_user: ubuntu
 
-
   roles:
-    - jenkins
+  - role: jenkins
+    become: yes
