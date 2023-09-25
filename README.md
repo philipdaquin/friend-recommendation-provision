@@ -22,8 +22,26 @@ it will create all the infrastructe required to run the ci cd piepline adn as we
 - Autoscaling 
 - Gateway 
 
-## Architecture **[POC]**
+## AWS Architecture **[POC]**
 ![aws_architecture](https://github.com/philipdaquin/friend-recommendation-provision/assets/85416532/e1ec189e-6631-4d93-b099-41378943201e)
+
+
+## CI / CD Pipeline Architecture 
+
+
+## Continuous Integration Pipeline
+Stack 
+- Ansible 
+- Jenkins
+- Terraform 
+- EC2
+
+### Steps to reproduce 
+The following steps will automate the provisioning of all services required to run a Jenkins Continuous Integration (CI) Server.
+1. Create a new key pair in AWS. Insert it inside `/ci-services`. Go the `modules/0-locals.tf` to configure the file path of `***.pem`.
+2. You may need to perform `chmod 600 *****.pem` to unlock the secret. 
+2. Run Terraform 
+3. Rock and Roll!
 
 
 ## Continous Deployment Pipeline
@@ -34,7 +52,6 @@ or initialise Argo CD using Helm with Terraform. /argocd
 [description]
 
 
-
 ### Steps to reproduce
 1. Provision infrastructure on Terraform 
 2. Test connection with EchoServer. Expose application to NLB 
@@ -43,16 +60,3 @@ or initialise Argo CD using Helm with Terraform. /argocd
 5. Create a hosted zone in Route53. 
 6. Create custom DNS name with ACM certificate. 
 
-
-## Continuous Integration Pipeline
-
-Stack 
-- Ansible [WIP] ~ I decided to opt-out from using Ansible for now and instead installed Jenkins, Docker, Java manaually 
-- Jenkins
-- Terraform 
-- EC2
-
-### Steps to reproduce 
-1. Create a new key pair in AWS 
-2. Run Terraform 
-3. Rock and Roll!

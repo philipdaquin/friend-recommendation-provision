@@ -20,9 +20,14 @@ resource "aws_instance" "ec2" {
 
     #   
     #   Running Without initialising Ansible
-    #
+    # chmod 600 your_private_key_location
     provisioner "remote-exec" {
-        inline = [ "echo 'Wait Until SSH is ready" ]
+        
+        inline = [ 
+            # "sudo apt update", 
+            "echo 😐 Wait Until SSH is ready" 
+        ]
+        
         connection {
             type = "ssh"
             user = local.ssh_user
@@ -30,12 +35,23 @@ resource "aws_instance" "ec2" {
             host = aws_instance.ec2.public_ip
         }
     }
+
+    /*
+        By setting the ANSIBLE_HOST_KEY_CHECKING environment variable to False, 
+        you skip checking if the server was connected to beforehand.
+    */
     provisioner "local-exec" {
-        command = "ansible-playbook -i ${aws_instance.ec2.public_ip}, --private-key ${local.private_key_path} jenkins.yaml" 
+        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ${local.ssh_user} -i ${aws_instance.ec2.public_ip}, --private-key ${local.private_key_path} ${local.playbook_path}" 
     }
-    
 }
 
 output "ec2" {
     value = aws_instance.ec2.public_ip
+}
+
+output "login" { 
+    value = "To get the admin password, ssh -i devops.pem ubuntu@${aws_instance.ec2.public_ip}" 
+}
+output "getpassword" { 
+    value = "Run `systemctl status jenkins`"
 }
