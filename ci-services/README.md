@@ -12,7 +12,7 @@
 3. Run `terraform apply`
 4. To get the Jenkins password, ssh to your EC2 instance and enter the following `systemctl status jenkins` 
 
-
+### Technology Stack
 - EC2
 - Jenkins
 - SonarQube
