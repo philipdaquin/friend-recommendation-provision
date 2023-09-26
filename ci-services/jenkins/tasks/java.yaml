@@ -1,0 +1,6 @@
+---
+- name: Install JRE and JDK
+  apt:
+    name: "{{ jenkins_jdk }}"
+    install_recommends: no
+    update_cache: yes

@@ -9,6 +9,6 @@
 #     name: nginx
 
 # ---
-
+- include: java.yaml
 - include: docker.yaml
-- include: jenkins.yaml
+- include: jenkins.yaml 

@@ -1,9 +1,4 @@
 ---
-- name: Install JRE and JDK
-  apt:
-    name: "{{ jenkins_jdk }}"
-    install_recommends: no
-    update_cache: yes
 
 - name: Add APT key
   apt_key:
@@ -20,3 +15,10 @@
     name: jenkins
     update_cache: yes
     install_recommends: no
+
+
+- name: Add Jenkins to Docker Group
+  command: sudo usermod -a -G docker jenkins
+
+- name: Restart Jenkins 
+  command: sudo service jenkins restart
