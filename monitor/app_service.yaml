@@ -4,7 +4,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: my-app
-  namespace: default
+  namespace: argocd
   annotations:
     # The image you want to monitor
     argocd-image-updater.argoproj.io/image-list: philipasd/app:~v1.0.0
