@@ -9,11 +9,11 @@
 # }
 
 
-resource "helm_release" "argocd" {
+resource "helm_release" "argocd_updater" {
     repository          = "https://argoproj.github.io/argo-helm"
-    chart               = "argo-cd"
-    name                = "argocd"
-    namespace           = "argocd"
+    chart               = "argo-cd-updater"
+    name                = "argocd-updater"
+    namespace           = "argocd-updater"
     version             = "4.9.7"
     create_namespace    = true
     values = [ file("values/argocd.yaml") ]
