@@ -6,7 +6,7 @@ metadata:
   name: app
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: philipasd/postgres:~v1
+    argocd-image-updater.argoproj.io/image-list: philipasd/app:~v1.0.0
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -14,15 +14,15 @@ spec:
   source:
     repoURL: https://github.com/philipdaquin/friend-recommendation-infra.git
     targetRevision: HEAD
-    path: postgresdb
+    path: app_service
     helm:
       parameters:
         - name: "replicaCount"
           value: "2"
         - name: "image.repository"
-          value: philipasd/postgres
+          value: philipasd/app
         - name: "image.tag"
-          value: "latest"
+          value: "1.0.0"
   destination:
     server: https://kubernetes.default.svc
     namespace: default
