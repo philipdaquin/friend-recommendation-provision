@@ -13,6 +13,8 @@ it will create all the infrastructe required to run the ci cd piepline adn as we
 - Terraform 
 - Kubernetes 
 - Argo CD
+- Helm
+
 
 ### AWS Stack 
 - EKS
@@ -52,6 +54,14 @@ or initialise Argo CD using Helm with Terraform. /argocd
 [description]
 
 
+
+to do:
+- image updater needs to be tested 
+- nice to haves: use ansible to automate argocd-to-eks deployment to initialise the app 
+- modularise each aws services 
+
+
+
 ### Steps to reproduce
 1. Provision infrastructure on Terraform 
 2. Test connection with EchoServer. Expose application to NLB 
@@ -60,3 +70,9 @@ or initialise Argo CD using Helm with Terraform. /argocd
 5. Create a hosted zone in Route53. 
 6. Create custom DNS name with ACM certificate. 
 
+ZMFl9jL4nmEMkNBW
+dkPfmi1XeSVWHDA8
+The key fingerprint is:
+SHA256:0ovACVIv1f9KoCa0cZmKLlcO1yHfNWcJfqvPH/z7lbA philipdaquin20@gmail.com
+
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICLCf+0+ev2S627hQylmHAmE2NZd97x4cK/Prpm/mMel philipdaquin20@gmail.com

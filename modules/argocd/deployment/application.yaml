@@ -8,7 +8,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-app
+  name: app
   namespace: argocd
 
   # Force Argo to delete this instance as well
@@ -19,7 +19,7 @@ spec:
   source:
     repoURL: https://github.com/philipdaquin/friend-recommendation-infra.git
     targetRevision: HEAD
-    path: my-app
+    path: app
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:

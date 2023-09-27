@@ -5,4 +5,6 @@ locals {
   zone2       = "us-east-2b"
   eks_name    = "demo"
   eks_version = "1.27"
+  instance_type = "t3.small"
+  capacity_type = "ON_DEMAND"
 }
