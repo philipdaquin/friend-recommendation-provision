@@ -4,18 +4,21 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: app
-  namespace: argocd
+  namespace: default
   annotations:
-    argocd-image-updater.argoproj.io/image-list: philipasd/app:~v1.0.0
+    # The image you want to monitor
+    argocd-image-updater.argoproj.io/image-list: philipasd/app:~1
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: https://github.com/philipdaquin/friend-recommendation-infra.git
-    targetRevision: main
+    
+    targetRevision: master
     #  Point to the Helm Charts
     path: app_service
+
     helm:
       parameters:
         - name: "replicaCount"
@@ -23,7 +26,7 @@ spec:
         - name: "image.repository"
           value: philipasd/app
         - name: "image.tag"
-          value: "1.0.0"
+          value: "1"
   destination:
     server: https://kubernetes.default.svc
     namespace: dev
