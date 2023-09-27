@@ -12,7 +12,7 @@ metadata:
   namespace: argocd
   # Force Argo to delete this instance as well
   annotations:
-    argocd-image-updater.argoproj.io/image-list: philipasd/app:~v0.0.1
+    argocd-image-updater.argoproj.io/image-list: philipasd/app:~v1.0.0
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
