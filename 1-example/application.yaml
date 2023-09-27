@@ -12,7 +12,15 @@ metadata:
   namespace: argocd-updater
   # Force Argo to delete this instance as well
   annotations:
-    argocd-image-updater.argoproj.io/image-list: philipasd/app:~v1.0
+    # argocd-image-updater.argoproj.io/image-list: philipasd/app:~v1.0
+    argocd-image-updater.argoproj.io/image-list: philipasd/app
+    argocd-image-updater.argoproj.io/git-branch: master
+    argocd-image-updater.argoproj.io/write-back-method: git  # all git options are supported
+    argocd-image-updater.argoproj.io/write-back-target: kustomization
+    # argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
+    
+    
+
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
