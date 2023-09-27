@@ -9,7 +9,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: my-app
-  namespace: argocd
+  namespace: argocd-updater
   # Force Argo to delete this instance as well
   annotations:
     argocd-image-updater.argoproj.io/image-list: philipasd/app:~v1.0.0
