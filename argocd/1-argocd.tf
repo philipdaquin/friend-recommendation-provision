@@ -4,7 +4,7 @@ resource "helm_release" "argocd" {
     chart               = "argo-cd"
     name                = "argocd"
     namespace           = "argocd"
-    version             = "4.9.7"
+    version             = "3.35.4"
     create_namespace    = true
     values = [ file("values/argocd.yaml") ]
 }

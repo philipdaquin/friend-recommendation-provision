@@ -7,7 +7,7 @@ metadata:
   namespace: argocd
   annotations:
     # The image you want to monitor
-    argocd-image-updater.argoproj.io/image-list: philipasd/app:~v1.0.0
+    argocd-image-updater.argoproj.io/image-list: philipasd/app:~v0.4
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
