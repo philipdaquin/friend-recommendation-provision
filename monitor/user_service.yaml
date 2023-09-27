@@ -25,7 +25,8 @@ spec:
           value: "1.0"
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    # Where do you want this to be deployed
+    namespace: prod
   syncPolicy:
     automated:
       prune: true
