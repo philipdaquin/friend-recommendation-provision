@@ -6,7 +6,7 @@ metadata:
   name: app
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: philipasd/user_service:~v2
+    argocd-image-updater.argoproj.io/image-list: philipasd/posgres:~v1
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -14,13 +14,13 @@ spec:
   source:
     repoURL: https://github.com/philipdaquin/friend-recommendation-infra.git
     targetRevision: HEAD
-    path: user_service
+    path: postgresdb
     helm:
       parameters:
         - name: "replicaCount"
           value: "2"
         - name: "image.repository"
-          value: philipasd/user_service
+          value: philipasd/posgres
         - name: "image.tag"
           value: "1.0"
   destination:
