@@ -3,7 +3,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-app
+  name: app
   namespace: argocd
   annotations:
     # The image you want to monitor
