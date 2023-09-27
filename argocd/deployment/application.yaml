@@ -8,7 +8,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app
+  name: new-app
   namespace: argocd
   # Force Argo to delete this instance as well
   annotations:

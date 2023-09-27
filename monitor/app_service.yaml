@@ -3,11 +3,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app
-  namespace: default
+  name: new-app
+  namespace: argocd
   annotations:
     # The image you want to monitor
-    argocd-image-updater.argoproj.io/image-list: philipasd/app:~1
+    argocd-image-updater.argoproj.io/image-list: philipasd/app:~v1.0.0
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -26,7 +26,7 @@ spec:
         - name: "image.repository"
           value: philipasd/app
         - name: "image.tag"
-          value: "1"
+          value: "v1.0.0"
   destination:
     server: https://kubernetes.default.svc
     namespace: dev
