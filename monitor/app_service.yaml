@@ -13,7 +13,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/philipdaquin/friend-recommendation-infra.git
-    targetRevision: main
+    targetRevision: HEAD
     #  Point to the Helm Charts
     path: app_service
     helm:
