@@ -19,8 +19,8 @@ spec:
   source:
     repoURL: https://github.com/philipdaquin/friend-recommendation-infra.git
     targetRevision: HEAD
-    # Point to the Helm Chart FIle
-    path: app_service
+    # Point to the deployment.yaml
+    path: app
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
