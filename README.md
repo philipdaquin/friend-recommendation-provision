@@ -70,15 +70,10 @@ to do:
 5. Create a hosted zone in Route53. 
 6. Create custom DNS name with ACM certificate. 
 
-ZMFl9jL4nmEMkNBW
-dkPfmi1XeSVWHDA8
-The key fingerprint is:
-SHA256:0ovACVIv1f9KoCa0cZmKLlcO1yHfNWcJfqvPH/z7lbA philipdaquin20@gmail.com
+### Update the password for ArgoCD
 
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICLCf+0+ev2S627hQylmHAmE2NZd97x4cK/Prpm/mMel philipdaquin20@gmail.com
-
-ybJ9MGCnRzTidSC4
-
-DDWesS-IUYyK7Txj
-dZ7Gvz5qQ6CX91dD%
-71vSt8fXw7bEjfFo%    
+```
+    kubectl --namespace argocd create secret generic argogitsecrets \
+    --from-literal=username=[GITHUB_USERNAME] \             
+    --from-literal=password=[GITHUB_TOKEN]       
+```
