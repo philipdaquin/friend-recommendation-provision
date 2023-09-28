@@ -22,7 +22,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:philipdaquin/friend-recommendation-infra.git
+    # repoURL: git@github.com:philipdaquin/friend-recommendation-infra.git
+    repoURL: https://github.com/philipdaquin/friend-recommendation-infra.git
     targetRevision: master
     # Point to the deployment.yaml
     path: environments/staging/app
