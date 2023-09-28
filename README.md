@@ -56,13 +56,12 @@ or initialise Argo CD using Helm with Terraform. /argocd
 
 
 to do:
-- image updater needs to be tested 
+- image updater needs to be tested[DONE] 
 - nice to haves: use ansible to automate argocd-to-eks deployment to initialise the app 
 - modularise each aws services 
 
 
-
-### Steps to reproduce
+### Steps to reproduce Main Architecture 
 1. Provision infrastructure on Terraform 
 2. Test connection with EchoServer. Expose application to NLB 
 3. Install Argo CD and select the manifest files 
@@ -70,8 +69,12 @@ to do:
 5. Create a hosted zone in Route53. 
 6. Create custom DNS name with ACM certificate. 
 
-### Update the password for ArgoCD
+### Steps to reproduce ArgoCD Updater
+1. Create a secret key for ArgoCD
+2. Initialise ArgoCd using Terraform, using `terraform init...plan..apply`
+3. Configure the target url to your Kubernetes Manifest files
 
+### Create a secret key for ArgoCD
 ```
     kubectl --namespace argocd create secret generic argogitsecrets \
     --from-literal=username=[GITHUB_USERNAME] \             
