@@ -1,19 +1,22 @@
-
-
 # Friend Recommendation Infrastructure Provisioning [POC]
 **Note: Currently works in the US-East Region. There seems to be an issue when initialising in Sydney Region.
 
 This project provisions a Kubernetes Cluster (EKS) to manage each microservices.  It uses a GitOps workflow to simplfy the process of Continous Deployments to AWS.
 
-This project shows you the entire CI CD pipeline for the app 
-it will create all the infrastructe required to run the ci cd piepline adn as well support 
+This repo is for:
+- Centralised Monitoring and Logging 
+- Cloud infrastructure
+- End to End CI and CD Pipeline
+
+
 
 
 ### Prerequisites:
 - Terraform 
 - Kubernetes 
 - Argo CD
-- Helm
+- Kustomise
+- Helm 
 
 
 ### AWS Stack 
