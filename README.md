@@ -83,3 +83,5 @@ to do:
     --from-literal=username=[GITHUB_USERNAME] \             
     --from-literal=password=[GITHUB_TOKEN]       
 ```
+
+MXPjjNGEKNlwxY57

@@ -8,7 +8,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app
+  name: recommendation-service
   namespace: argocd
   # Force Argo to delete this instance as well
   annotations:
@@ -23,7 +23,8 @@ spec:
     repoURL: https://github.com/philipdaquin/friend-recommendation-infra.git
     targetRevision: master
     # Point to the deployment.yaml
-    path: app
+    path: deployment/dev/recommendation_service/recommendation_deployment
+
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
