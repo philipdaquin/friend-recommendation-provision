@@ -7,11 +7,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: api-gateway
+  name: my-app
   namespace: argocd
   # Force Argo to delete this instance as well
   annotations:
-    argocd-image-updater.argoproj.io/image-list: philipasd/api_gateway:~0.0.0
+    argocd-image-updater.argoproj.io/image-list: philipasd/api_gateway:~1
     argocd-image-updater.argoproj.io/git-branch: master
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argogitsecrets  # all git options are supported
   finalizers:

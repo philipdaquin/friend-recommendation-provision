@@ -13,7 +13,7 @@ metadata:
   # Force Argo to delete this instance as well
   annotations:
     # argocd-image-updater.argoproj.io/image-list: philipasd/app:~v1.0
-    argocd-image-updater.argoproj.io/image-list: philipasd/app:~1
+    argocd-image-updater.argoproj.io/image-list: philipasd/app:~0.0.0
     argocd-image-updater.argoproj.io/git-branch: master
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argogitsecrets  # all git options are supported
 
