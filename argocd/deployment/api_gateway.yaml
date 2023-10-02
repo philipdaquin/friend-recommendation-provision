@@ -13,7 +13,7 @@ metadata:
   annotations:
     argocd-image-updater.argoproj.io/image-list: philipasd/api_gateway:~0.0.0
     argocd-image-updater.argoproj.io/git-branch: master
-    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argogitsecrets  # all git options are supported
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argoapigateway  # all git options are supported
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
