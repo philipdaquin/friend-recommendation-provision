@@ -23,7 +23,7 @@ spec:
     repoURL: https://github.com/philipdaquin/friend-recommendation-infra.git
     targetRevision: master
     # Point to the deployment.yaml
-    path: deployment/dev/discovery_service
+    path: environments/dev/discovery_service
 
   destination:
     server: https://kubernetes.default.svc

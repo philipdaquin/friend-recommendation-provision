@@ -12,9 +12,9 @@ metadata:
   namespace: argocd
   # Force Argo to delete this instance as well
   annotations:
-    argocd-image-updater.argoproj.io/image-list: philipasd/app:~0.1
+    argocd-image-updater.argoproj.io/image-list: mongo
     argocd-image-updater.argoproj.io/git-branch: master
-    argocd-image-updater.argoproj.io/write-back-method: git  # all git options are supported
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argogitsecrets  # all git options are supported
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -23,7 +23,7 @@ spec:
     repoURL: https://github.com/philipdaquin/friend-recommendation-infra.git
     targetRevision: master
     # Point to the deployment.yaml
-    path: deployment/dev/friend_service/mongodb_deployment
+    path: environments/dev/mongodb_deployment
 
   destination:
     server: https://kubernetes.default.svc
