@@ -6,6 +6,6 @@
 
 
   roles:
-    - jenkins
+    - ansible
   # - role: jenkins
   #   become: yes
