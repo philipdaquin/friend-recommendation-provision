@@ -1,12 +1,12 @@
 
 data "aws_iam_policy_document" "prometheus" {
     statement {
-        actions = [ "sts::AssumeRoleWithWebIdentity" ]
+        actions = [ "sts:AssumeRoleWithWebIdentity" ]
         effect = "Allow"
 
         condition {
             test = "StringEquals"
-            variable = "${replace(aws_iam_openid_connect_provider.eks.url, "https://", "")}"
+            variable = "${replace(aws_iam_openid_connect_provider.eks.url, "https://", "")}:sub"
             values = [ "system:serviceaccount:monitoring:prometheus" ]
         }
         principals {
@@ -21,25 +21,25 @@ resource "aws_iam_role" "prometheus" {
     name = "prometheus"
 }
 
-resource "aws_iam_policy" "prometheus_ingest_access" {
-    name = "PrometheusDemoIngestAccess"
-    policy = jsonencode({
-        Statement = [{
-            Action = ["aps:RemoteWrite"]
-            Effect = "Allow"
-            Resource = aws_prometheus_workspace.demo.arn
-        }]
-        Version = "2012-10-17"
-    })
-}
+# resource "aws_iam_policy" "prometheus_ingest_access" {
+#     name = "PrometheusDemoIngestAccess"
+#     policy = jsonencode({
+#         Statement = [{
+#             Action = ["aps:RemoteWrite"]
+#             Effect = "Allow"
+#             Resource = aws_prometheus_workspace.demo.arn
+#         }]
+#         Version = "2012-10-17"
+#     })
+# }
 
-resource "aws_iam_role_policy_attachment" "prometheus_ingest_access" {
-    role = aws_iam_role.prometheus.name
-    policy_arn = aws_iam_policy.prometheus_ingest_access.arn
-}
+# resource "aws_iam_role_policy_attachment" "prometheus_ingest_access" {
+#     role = aws_iam_role.prometheus.name
+#     policy_arn = aws_iam_policy.prometheus_ingest_access.arn
+# }
 
 // Only use if you have standalone EC2 instances 
-resource "aws_iam_role_policy_attachment" "promtheus_ec2_access" {
+resource "aws_iam_role_policy_attachment" "prometheus" {
     role = aws_iam_role.prometheus.name
     policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess"
 }

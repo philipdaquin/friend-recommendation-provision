@@ -24,7 +24,7 @@ resource "aws_security_group" "ec2" {
     from_port   = 9100
     to_port     = 9100
     protocol    = "TCP"
-    cidr_blocks = [aws_eks_cluster.eks.vpc_config[0].cluster_security_group_id]
+    security_groups = [aws_eks_cluster.eks.vpc_config[0].cluster_security_group_id]
   }
 
   egress {
