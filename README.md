@@ -4,11 +4,9 @@
 This project provisions a Kubernetes Cluster (EKS) to manage each microservices.  It uses a GitOps workflow to simplfy the process of Continous Deployments to AWS.
 
 This repo is for:
-- Centralised Monitoring and Logging 
 - Cloud infrastructure
 - End to End CI and CD Pipeline
-
-
+- Centralised Monitoring and Logging 
 
 
 ### Prerequisites:
@@ -18,7 +16,6 @@ This repo is for:
 - Kustomise
 - Helm 
 
-
 ### AWS Stack 
 - EKS
 - VPC
@@ -26,6 +23,7 @@ This repo is for:
 - EC2
 - Autoscaling 
 - Gateway 
+- Route53 
 
 ## AWS Architecture **[POC]**
 ![aws_architecture](https://github.com/philipdaquin/friend-recommendation-provision/assets/85416532/e1ec189e-6631-4d93-b099-41378943201e)
@@ -37,9 +35,12 @@ This repo is for:
 ## Continuous Integration Pipeline
 Stack 
 - Ansible 
+- Dockerhub
 - Jenkins
 - Terraform 
-- EC2
+- EC2 & other AWS
+- Maven
+- OpenJdk 17
 
 ### Steps to reproduce 
 The following steps will automate the provisioning of all services required to run a Jenkins Continuous Integration (CI) Server.
@@ -50,19 +51,24 @@ The following steps will automate the provisioning of all services required to r
 
 
 ## Continous Deployment Pipeline
+Stack 
+- Argo Cd 
+- Image Updater 
+- Kubernetes
+- Helm 
+- Github
+
+
+#### To do:
+- image updater needs to be tested[DONE] 
+- nice to haves: use ansible to automate argocd-to-eks deployment to initialise the app 
+- modularise each terraform AWS services  
+
 ### Argo CD 
 **Manual Installation**: https://argo-cd.readthedocs.io/en/stable/getting_started/
 or initialise Argo CD using Helm with Terraform. /argocd
 
 [description]
-
-
-
-to do:
-- image updater needs to be tested[DONE] 
-- nice to haves: use ansible to automate argocd-to-eks deployment to initialise the app 
-- modularise each aws services 
-
 
 ### Steps to reproduce Main Architecture 
 1. Provision infrastructure on Terraform 
@@ -84,4 +90,17 @@ to do:
     --from-literal=password=[GITHUB_TOKEN]       
 ```
 
-MXPjjNGEKNlwxY57
+## Centralised Monitoring, Logging, and Traces 
+Stack 
+- Prometheus 
+- Grafana
+- Promtail & Loki
+- Tempo 
+- cAdvisor
+- Ansible 
+- Open Telemetry
+- Alert Manager 
+- Thanos 
+
+Terraform 
+AWS Services 
