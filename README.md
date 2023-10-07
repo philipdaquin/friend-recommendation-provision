@@ -92,7 +92,7 @@ or initialise Argo CD using Helm with Terraform. /argocd
 
 ## Centralised Monitoring, Logging, and Traces 
 Stack 
-- Prometheus 
+- Prometheus Operator
 - Grafana
 - Promtail & Loki
 - Tempo 
@@ -105,3 +105,6 @@ Stack
 
 Terraform 
 AWS Services 
+
+
+### 
