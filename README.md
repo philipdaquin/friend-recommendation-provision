@@ -101,6 +101,7 @@ Stack
 - Open Telemetry
 - Alert Manager 
 - Thanos 
+- Kube State Metrics
 
 Terraform 
 AWS Services 
