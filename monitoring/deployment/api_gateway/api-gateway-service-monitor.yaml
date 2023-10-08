@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: api-gateway
+  namespace: monitoring
+  labels: 
+    prometheus: main 
+spec:
+  namespaceSelector:
+    matchNames:
+      - monitoring
+  selector:
+    matchLabels:
+      app: api-gateway
+  endpoints:
+  - port: http
+    path: '/actuator/prometheus'
+    interval: 10s
+    honorLabels: true
