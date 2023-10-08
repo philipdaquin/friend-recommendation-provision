@@ -1,0 +1,18 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: user-deployment
+  namespace: monitoring
+  labels: 
+    prometheus: main
+spec:
+  namespaceSelector:
+    matchNames:
+      - monitoring
+  selector:
+    matchLabels:
+      app: user-deployment
+  podMetricsEndpoints:
+    - port: http
+      path: /actuator/prometheus
