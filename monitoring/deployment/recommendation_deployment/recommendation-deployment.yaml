@@ -1,0 +1,43 @@
+
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: recommendation-configmap
+  namespace: monitoring
+
+data:
+  server.port: "7002"
+  SPRING_PROFILES_ACTIVE: docker
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendation-deployment
+  namespace: monitoring
+
+spec:
+  selector:
+    matchLabels:
+      app: recommendation-deployment
+  template:
+    metadata:
+      labels:
+        app: recommendation-deployment
+    spec:
+      containers:
+      - name: recommendation-deployment
+        image: philipasd/recommendation_service:0.0.0
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          protocol: TCP
+          containerPort: 7002
+        env:
+        - name:  SPRING_PROFILES_ACTIVE
+          valueFrom:
+            configMapKeyRef:
+              name:  recommendation-configmap
+              key:  SPRING_PROFILES_ACTIVE
+
