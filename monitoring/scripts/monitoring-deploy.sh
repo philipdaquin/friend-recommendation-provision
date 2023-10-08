@@ -9,3 +9,4 @@ until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; 
 # create monitoring components
 kubectl create -f manifests/
 
+cd deployment && bash build.sh 
