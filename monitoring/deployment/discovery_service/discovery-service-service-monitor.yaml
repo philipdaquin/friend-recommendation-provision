@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: discovery-service
+  namespace: monitoring
+  labels: 
+    prometheus: main 
+spec:
+  namespaceSelector:
+    matchNames:
+      - monitoring
+  selector:
+    matchLabels:
+      app: discovery-service
+  endpoints:
+  - port: http
+    path: '/actuator/prometheus'
+    interval: 10s
+    honorLabels: true

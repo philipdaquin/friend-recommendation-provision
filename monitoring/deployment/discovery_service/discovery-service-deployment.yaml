@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: discovery-service
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: discovery-service # has to match .spec.template.metadata.labels
+  serviceName: "eureka"
+  replicas: 1 # by default is 1
+  template:
+    metadata:
+      labels:
+        app: discovery-service # has to match .spec.selector.matchLabels
+    spec:
+      containers:
+      - name: discovery-service
+        image: philipasd/discovery_service:0.0.0
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8761
+          protocol: TCP
+
+---
+
+# Load balancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: eureka-lb
+  namespace: monitoring
+spec:
+  selector:
+    app: discovery-service
+  type: NodePort
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 8761
