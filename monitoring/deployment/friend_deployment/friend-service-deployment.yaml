@@ -1,0 +1,45 @@
+
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: friend-configmap
+  namespace: monitoring
+
+data:
+  server.port: "7001"
+  SPRING_PROFILES_ACTIVE: docker
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: friend-deployment
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: friend-deployment
+  template:
+    metadata:
+      labels:
+        app: friend-deployment
+    spec:
+      containers:
+      - name: friend-deployment
+        image: philipasd/friend_service:0.0.0
+        imagePullPolicy: Always
+        
+        ports:
+        - name: http
+          containerPort: 7001
+          protocol: TCP
+
+        env:
+        - name:  SPRING_PROFILES_ACTIVE
+          valueFrom:
+            configMapKeyRef:
+              name:  friend-configmap
+              key:  SPRING_PROFILES_ACTIVE
+
