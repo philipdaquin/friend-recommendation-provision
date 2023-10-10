@@ -1,26 +1,16 @@
 
 
-
-apiVersion: v1
-kind: Namespace
-metadata:
-  name:  neo4j
----
-
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: neo4j-configmap
   namespace: neo4j
-
 data:
   NEO4J_PASSWORD: password
   NEO4J_HOST: username
   NEO4J_ALLOW_UPGRADE: "true"
 
 ---
-
-
 
 apiVersion: apps/v1
 kind: Deployment
@@ -46,7 +36,18 @@ spec:
       containers:
       - name:  neo4j-db
         image:  bitnami/neo4j
-
+        imagePullPolicy: "IfNotPresent"
+        volumeMounts:
+        - name: neo4j-plugins
+          mountPath: /plugins
+        command:
+          - "/bin/sh"
+          - "-c"
+          - |
+            curl -L https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/3.5.0.6/apoc-3.5.0.6-all.jar -O
+            curl -L https://github.com/neo4j-contrib/neo4j-graph-algorithms/releases/download/3.5.4.0/graph-algorithms-algo-3.5.4.0.jar -O
+            cp -R apoc-3.5.0.6-all.jar /plugins
+            cp -R graph-algorithms-algo-3.5.4.0.jar /plugins
         env:
         - name: NEO4J_PASSWORD
           valueFrom:
@@ -63,13 +64,22 @@ spec:
             configMapKeyRef:
               name:  neo4j-configmap
               key: NEO4J_ALLOW_UPGRADE
-        ports:
-        - containerPort:  7474
-          name:  http
-        - containerPort:  7678
-          name:  bolt
-        - containerPort:  7473
-          name:  https
-        volumeMounts:
-        - name: neo4j-data
-          mountPath: "/var/lib/neo4j/data"
+        ports: ## Ports to map
+        - containerPort: 7474
+          name: http
+        - containerPort: 7687
+          name: bolt
+        - containerPort: 7473
+          name: https
+      volumeMounts: ## Volumes to mount
+      - name: neo4j-plugins
+        mountPath: "/var/lib/neo4j/plugins"
+      - name: neo4j-data
+        mountPath: "/var/lib/neo4j/data"
+      volumes:
+      - name: neo4j-data
+        persistentVolumeClaim:
+          claimName: neo4j-data-claim
+      - name: neo4j-plugins
+        persistentVolumeClaim:
+          claimName: neo4j-plugin-claim

@@ -13,9 +13,9 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: fast
-  gcePersistentDisk:
-    pdName: pd-ssd-disk-1
+  storageClassName: db
+  hostPath:
+    path: "data/neo4j/db"
 ---
 kind: PersistentVolume
 apiVersion: v1
@@ -32,6 +32,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: fast
-  gcePersistentDisk:
-    pdName: pd-ssd-disk-1
+  storageClassName: db
+  hostPath:
+    path: "data/neo4j/db"
