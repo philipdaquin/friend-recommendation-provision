@@ -7,4 +7,10 @@ locals {
   eks_version = "1.27"
   instance_type = "t3.small"
   capacity_type = "ON_DEMAND"
+
+
+  private_key_path = "devops.pem"
+  ssh_user = "ubuntu" 
+  playbook_path = "../playbook.yaml"
+
 }

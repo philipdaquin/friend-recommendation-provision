@@ -35,7 +35,6 @@ spec:
       labels:
         app:  user-deployment
     spec:
-
       containers:
       - name:  user-deployment
         #

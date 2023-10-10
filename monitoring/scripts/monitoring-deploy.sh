@@ -11,3 +11,7 @@ until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; 
 kubectl create -f manifests/
 
 cd deployment && bash build.sh 
+
+kubectl get services -n monitoring   
+
+kubectl get pods -n monitoring

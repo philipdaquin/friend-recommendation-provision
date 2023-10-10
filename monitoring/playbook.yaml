@@ -1,0 +1,11 @@
+# Description
+- name: Install Jenkins
+  hosts: all
+  remote_user: ubuntu
+  become: yes
+
+
+  roles:
+    - ansible
+  # - role: jenkins
+  #   become: yes

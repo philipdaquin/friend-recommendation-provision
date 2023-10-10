@@ -38,7 +38,27 @@ resource "aws_instance" "ec2" {
         systemctl enable node_exporter
         systemctl start node_exporter
     EOF
+
+
+    /*
+        Automate Installing Prometheus Operator Dependencies, CRDs, and deployment Yamls
     
+    */
+    # provisioner "remote-exec" {
+    #     inline = [ "echo Installing Prometheus Operator, Wait for CRD to complete and Install all dependencies" ]
+
+    #     connection {
+    #         type = "ssh"
+    #         user = "ubuntu"
+    #         private_key = file(local.private_key_path)
+    #         host = aws_instance.ec2.public_ip
+    #     }
+    # }
+
+    # // Run ansible playbook
+    # provisioner "local-exec" {
+    #     command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ${local.ssh_user} -i ${aws_instance.ec2.public_ip}, --private-key ${local.private_key_path} ${local.playbook_path}" 
+    # }
     tags = {
         Name          = "myapp"
         service       = "myapp"
@@ -46,3 +66,7 @@ resource "aws_instance" "ec2" {
     }
 }
 
+
+output "success" {
+        value = "Successfully installed monitoring services on EKS"
+}
