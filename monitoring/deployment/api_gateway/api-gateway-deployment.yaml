@@ -6,7 +6,7 @@ metadata:
   name: apigateway-configmap
   namespace:  monitoring
 data:
-  server.port: "9090"
+  server.port: "8090"
   SPRING_PROFILES_ACTIVE: docker
 
 ---
