@@ -20,7 +20,7 @@ services:
     #   - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
     #   - "/var/run/docker.sock:/var/run/docker.sock"
     environment:
-      - SERVICES=s3
+      - SERVICES=ec2, iam, sts, eks
       - DEBUG=1
       - DATA_DIR=/tmp/localstack/data
     volumes:

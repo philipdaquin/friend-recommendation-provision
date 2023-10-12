@@ -7,7 +7,7 @@ This repo is for:
 - Cloud infrastructure
 - End to End CI and CD Pipeline
 - Centralised Monitoring and Logging 
-
+- Centralised Configuration Management
 
 ### Prerequisites:
 - Terraform 
@@ -91,7 +91,6 @@ or initialise Argo CD using Helm with Terraform. /argocd
 ```
 
 ## Centralised Monitoring, Logging, and Traces 
-Stack 
 - Prometheus Operator
 - Grafana
 - Promtail & Loki
