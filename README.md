@@ -1,6 +1,4 @@
 # Friend Recommendation Infrastructure Provisioning [POC]
-**Note: Currently works in the US-East Region. There seems to be an issue when initialising in Sydney Region.
-
 This project provisions a Kubernetes Cluster (EKS) to manage each microservices.  It uses a GitOps workflow to simplfy the process of Continous Deployments to AWS.
 
 This repo is for:
@@ -8,6 +6,10 @@ This repo is for:
 - End to End CI and CD Pipeline
 - Centralised Monitoring and Logging 
 - Centralised Configuration Management
+- Platform infrastructure
+- End to End CI and Automated CD Pipeline
+- Centralised Monitoring, Alerting and Logging 
+
 
 ### Prerequisites:
 - Terraform 
@@ -27,7 +29,6 @@ This repo is for:
 
 ## AWS Architecture **[POC]**
 ![aws_architecture](https://github.com/philipdaquin/friend-recommendation-provision/assets/85416532/e1ec189e-6631-4d93-b099-41378943201e)
-
 
 ## CI / CD Pipeline Architecture 
 
@@ -58,11 +59,11 @@ Stack
 - Helm 
 - Github
 
-
 #### To do:
-- image updater needs to be tested[DONE] 
 - nice to haves: use ansible to automate argocd-to-eks deployment to initialise the app 
-- modularise each terraform AWS services  
+- modularise each terraform AWS services
+- test each infrastructure code in Localstack
+- generate Terraform diagram
 
 ### Argo CD 
 **Manual Installation**: https://argo-cd.readthedocs.io/en/stable/getting_started/
@@ -91,6 +92,7 @@ or initialise Argo CD using Helm with Terraform. /argocd
 ```
 
 ## Centralised Monitoring, Logging, and Traces 
+Stack 
 - Prometheus Operator
 - Grafana
 - Promtail & Loki
@@ -101,9 +103,13 @@ or initialise Argo CD using Helm with Terraform. /argocd
 - Alert Manager 
 - Thanos 
 - Kube State Metrics
-
 Terraform 
-AWS Services 
+AWS Services
 
-
-### 
+### Steps to reproduce
+Login to your Kubernetes Cluster then apply each steps.
+1. Create namespace and CRDs with ``` kubectl apply --server-side -f manifest/setup ```
+2. Wait for CRD creation to complete ```until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done```
+3. Create prometheus operator components with ```kubectl create -f manifests/```
+4. Deploy all system components inside deployments ```bash build.sh```
+ 
