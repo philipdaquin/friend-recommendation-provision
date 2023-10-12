@@ -3,7 +3,7 @@ This project provisions a Kubernetes Cluster (EKS) to manage each microservices.
 
 This repo is for:
 - Platform infrastructure
-- End to End CI and CD Pipeline
+- End to End CI and Automated CD Pipeline
 - Centralised Monitoring, Alerting and Logging 
 
 
@@ -25,7 +25,6 @@ This repo is for:
 
 ## AWS Architecture **[POC]**
 ![aws_architecture](https://github.com/philipdaquin/friend-recommendation-provision/assets/85416532/e1ec189e-6631-4d93-b099-41378943201e)
-
 
 ## CI / CD Pipeline Architecture 
 
@@ -56,11 +55,11 @@ Stack
 - Helm 
 - Github
 
-
 #### To do:
-- image updater needs to be tested[DONE] 
 - nice to haves: use ansible to automate argocd-to-eks deployment to initialise the app 
-- modularise each terraform AWS services  
+- modularise each terraform AWS services
+- test each infrastructure code in Localstack
+- generate Terraform diagram
 
 ### Argo CD 
 **Manual Installation**: https://argo-cd.readthedocs.io/en/stable/getting_started/
@@ -87,8 +86,7 @@ or initialise Argo CD using Helm with Terraform. /argocd
     --from-literal=username=[GITHUB_USERNAME] \             
     --from-literal=password=[GITHUB_TOKEN]       
 ```
-
-## Centralised Monitoring, Logging, and Traces 
+## Centralised Monitoring, Alerting, Logging, and Traces 
 Stack 
 - Prometheus Operator
 - Grafana
@@ -103,6 +101,4 @@ Stack
 
 Terraform 
 AWS Services 
-
-
-### 
+ 
