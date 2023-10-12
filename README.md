@@ -28,6 +28,14 @@ This repo is for:
 - Trivy [WiP]
 - Terraform Diagram 
 
+### Get Started 
+1. Initialise Core Architecture 
+2. Build CI CD Pipeline:
+    - Initialise Argo CD Module 
+    - Build CI Services
+3. Build Monitoring Services 
+
+
 
 ## AWS Architecture **[POC]**
 ![aws_architecture](https://github.com/philipdaquin/friend-recommendation-provision/assets/85416532/e1ec189e-6631-4d93-b099-41378943201e)
