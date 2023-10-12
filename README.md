@@ -1,12 +1,10 @@
 # Friend Recommendation Infrastructure Provisioning [POC]
-**Note: Currently works in the US-East Region. There seems to be an issue when initialising in Sydney Region.
-
 This project provisions a Kubernetes Cluster (EKS) to manage each microservices.  It uses a GitOps workflow to simplfy the process of Continous Deployments to AWS.
 
 This repo is for:
-- Cloud infrastructure
+- Platform infrastructure
 - End to End CI and CD Pipeline
-- Centralised Monitoring and Logging 
+- Centralised Monitoring, Alerting and Logging 
 
 
 ### Prerequisites:
