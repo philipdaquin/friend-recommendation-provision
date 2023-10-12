@@ -1,0 +1,39 @@
+
+##################################################
+#
+#  To use:  `kubectl apply -f application.yml`
+#
+##################################################
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: config-service
+  namespace: argocd
+  # Force Argo to delete this instance as well
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: philipasd/config_service:~0.0.0
+    argocd-image-updater.argoproj.io/git-branch: master
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argoapigateway  # all git options are supported
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/philipdaquin/friend-recommendation-infra.git
+    targetRevision: master
+    # Point to the deployment.yaml
+    path: environments/dev/config_service
+
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+    - Validate=true
+    - CreateNamespace=false
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true
+
