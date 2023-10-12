@@ -98,7 +98,13 @@ Stack
 - Alert Manager 
 - Thanos 
 - Kube State Metrics
-
 Terraform 
-AWS Services 
+AWS Services
+
+### Steps to reproduce
+Login to your Kubernetes Cluster then apply each steps.
+1. Create namespace and CRDs with ``` kubectl apply --server-side -f manifest/setup ```
+2. Wait for CRD creation to complete ```until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done```
+3. Create prometheus operator components with ```kubectl create -f manifests/```
+4. Deploy all system components inside deployments ```bash build.sh```
  
