@@ -2,12 +2,8 @@
 This project provisions a Kubernetes Cluster (EKS) to manage each microservices.  It uses a GitOps workflow to simplfy the process of Continous Deployments to AWS.
 
 This repo is for:
-- Cloud infrastructure
-- End to End CI and CD Pipeline
-- Centralised Monitoring and Logging 
-- Centralised Configuration Management
-- Platform infrastructure
-- End to End CI and Automated CD Pipeline
+- AWS Platform infrastructure Provisioning
+- Automated End to End CI and CD Pipeline
 - Centralised Monitoring, Alerting and Logging 
 
 
@@ -26,6 +22,12 @@ This repo is for:
 - Autoscaling 
 - Gateway 
 - Route53 
+
+### Infrastructure As Code 
+- Localstack 
+- Trivy [WiP]
+- Terraform Diagram 
+
 
 ## AWS Architecture **[POC]**
 ![aws_architecture](https://github.com/philipdaquin/friend-recommendation-provision/assets/85416532/e1ec189e-6631-4d93-b099-41378943201e)
@@ -46,7 +48,7 @@ Stack
 ### Steps to reproduce 
 The following steps will automate the provisioning of all services required to run a Jenkins Continuous Integration (CI) Server.
 1. Create a new key pair in AWS. Insert it inside `/ci-services`. Go the `modules/0-locals.tf` to configure the file path of `***.pem`.
-2. You may need to perform `chmod 600 *****.pem` to unlock the secret. 
+2. You may need to perform `chmod 600 ${NAMEOFFILE}.pem` to unlock the secret. 
 2. Run Terraform 
 3. Rock and Roll!
 
