@@ -7,6 +7,11 @@ This repo is for:
 - Centralised Monitoring, Alerting and Logging 
 
 
+
+
+## AWS Platform Architecture **[POC]**
+![aws_architecture](https://github.com/philipdaquin/friend-recommendation-provision/assets/85416532/e1ec189e-6631-4d93-b099-41378943201e)
+
 ### Prerequisites:
 - Terraform 
 - Kubernetes 
@@ -35,13 +40,8 @@ This repo is for:
     - Build CI Services
 3. Build Monitoring Services 
 
-
-
-## AWS Architecture **[POC]**
-![aws_architecture](https://github.com/philipdaquin/friend-recommendation-provision/assets/85416532/e1ec189e-6631-4d93-b099-41378943201e)
-
 ## CI / CD Pipeline Architecture 
-
+![2023_10_13_16_33_02_System_Design_Figma](https://github.com/philipdaquin/friend-recommendation-system/assets/85416532/c3c4c5ef-280c-403d-90ce-fad86d3084b2)
 
 ## Continuous Integration Pipeline
 Stack 
@@ -59,7 +59,6 @@ The following steps will automate the provisioning of all services required to r
 2. You may need to perform `chmod 600 ${NAMEOFFILE}.pem` to unlock the secret. 
 2. Run Terraform 
 3. Rock and Roll!
-
 
 ## Continous Deployment Pipeline
 Stack 
@@ -102,6 +101,7 @@ or initialise Argo CD using Helm with Terraform. /argocd
 ```
 
 ## Centralised Monitoring, Logging, and Traces 
+![monitoringstack](https://github.com/philipdaquin/friend-recommendation-system/assets/85416532/f16e4fb0-f5d0-4040-9588-e31d95ea2d15)
 Stack 
 - Prometheus Operator
 - Grafana
