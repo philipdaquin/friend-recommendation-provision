@@ -41,7 +41,8 @@ This repo is for:
 3. Build Monitoring Services 
 
 ## CI / CD Pipeline Architecture 
-![2023_10_13_16_33_02_System_Design_Figma](https://github.com/philipdaquin/friend-recommendation-system/assets/85416532/c3c4c5ef-280c-403d-90ce-fad86d3084b2)
+![2023_10_13_16_33_02_System_Design_Figma](https://github.com/philipdaquin/friend-recommendation-provision/assets/85416532/673d66ab-87fc-41ef-b411-3d31853a25ba)
+
 
 ## Continuous Integration Pipeline
 Stack 
@@ -101,7 +102,7 @@ or initialise Argo CD using Helm with Terraform. /argocd
 ```
 
 ## Centralised Monitoring, Logging, and Traces 
-![monitoringstack](https://github.com/philipdaquin/friend-recommendation-system/assets/85416532/f16e4fb0-f5d0-4040-9588-e31d95ea2d15)
+![monitoringstack](https://github.com/philipdaquin/friend-recommendation-provision/assets/85416532/5c81118a-5b2a-4121-a3ec-bdc05bb7887d)
 Stack 
 - Prometheus Operator
 - Grafana
